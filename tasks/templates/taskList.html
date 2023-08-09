@@ -1,0 +1,35 @@
+
+{% block contents %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr> 
+                <th> Title </th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for content in tasks %}
+                <tr>
+                    <td> {{ content.title }}</td>
+                    <td>{{ content.description }}</td>
+                    <td>{{ content.completed }}</td>
+                    <td><a href="/api/deleteTask/{{ content.id }}"><button class="btn btn-danger">Delete</button></a></td>
+                    <td><a href="/api/updateTask/{{ content.id }}"><button class="btn btn-primary">Update</button></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/api/createTask/"><button class="btn btn-success">Add Task</button></a>
+</div>
+{% endblock %}
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+
+<!-- Include Bootstrap JS and jQuery (if needed) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
